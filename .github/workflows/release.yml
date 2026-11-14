@@ -16,6 +16,9 @@ jobs:
     name: Publish Release
     runs-on: ubuntu-latest
 
+    env:
+      HAS_KEYSTORE: ${{ secrets.KEYSTORE_BASE64 != '' }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,7 +50,7 @@ jobs:
         run: flutter pub get
 
       - name: Decode keystore
-        if: ${{ secrets.KEYSTORE_BASE64 != '' }}
+        if: env.HAS_KEYSTORE == 'true'
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
