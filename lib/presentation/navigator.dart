@@ -177,7 +177,7 @@ class _AppNavigatorState extends ConsumerState<AppNavigator>
                 context,
               ).push(MaterialPageRoute(builder: (_) => const SettingsScreen()));
             },
-            tooltip: 'Settings',
+            tooltip: AppLocale.settings.getString(context),
           ),
           const SizedBox(width: 4),
         ],

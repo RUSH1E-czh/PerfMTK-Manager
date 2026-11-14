@@ -18,9 +18,9 @@ class LanguageSelectionSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final languages = [
-      (code: 'en', icon: '🇬🇧', title: 'English', subtitle: 'English'),
-      (code: 'es', icon: '🇪🇸', title: 'Español', subtitle: 'Spanish'),
-      (code: 'zh', icon: '🇨🇳', title: '中文', subtitle: 'Chinese (Simplified)'),
+      (code: 'en', icon: '🇬🇧', title: 'English', subtitle: AppLocale.langEnglish.getString(context)),
+      (code: 'es', icon: '🇪🇸', title: 'Español', subtitle: AppLocale.langSpanish.getString(context)),
+      (code: 'zh', icon: '🇨🇳', title: '中文', subtitle: AppLocale.langChinese.getString(context)),
     ];
 
     return Container(

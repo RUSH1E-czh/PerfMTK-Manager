@@ -222,7 +222,7 @@ class _AppProfilesScreenState extends ConsumerState<AppProfilesScreen>
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                'Daemon',
+                                AppLocale.daemonTab.getString(context),
                                 style: TextStyle(
                                   fontSize: 11.5,
                                   fontWeight: FontWeight.w700,

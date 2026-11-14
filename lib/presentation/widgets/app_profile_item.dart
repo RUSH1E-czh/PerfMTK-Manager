@@ -279,7 +279,7 @@ class AppProfileItem extends StatelessWidget {
                 width: 0.9,
               ),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
@@ -289,7 +289,7 @@ class AppProfileItem extends StatelessWidget {
                 ),
                 SizedBox(width: 2.5),
                 Text(
-                  'Bypass',
+                  AppLocale.bypassBadge.getString(context),
                   style: TextStyle(
                     color: Color(0xFFFFC107),
                     fontWeight: FontWeight.w800,
@@ -311,7 +311,7 @@ class AppProfileItem extends StatelessWidget {
                 width: 0.9,
               ),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
@@ -321,7 +321,7 @@ class AppProfileItem extends StatelessWidget {
                 ),
                 SizedBox(width: 2.5),
                 Text(
-                  'Thermal OFF',
+                  AppLocale.thermalOffBadge.getString(context),
                   style: TextStyle(
                     color: Color(0xFFFF5252),
                     fontWeight: FontWeight.w800,
@@ -375,7 +375,7 @@ class AppProfileItem extends StatelessWidget {
                 width: 0.9,
               ),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
@@ -385,7 +385,7 @@ class AppProfileItem extends StatelessWidget {
                 ),
                 SizedBox(width: 2.5),
                 Text(
-                  'Touch',
+                  AppLocale.touchBadge.getString(context),
                   style: TextStyle(
                     color: Color(0xFF00E5FF),
                     fontWeight: FontWeight.w800,
@@ -407,7 +407,7 @@ class AppProfileItem extends StatelessWidget {
                 width: 0.9,
               ),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
@@ -417,7 +417,7 @@ class AppProfileItem extends StatelessWidget {
                 ),
                 SizedBox(width: 3.5),
                 Text(
-                  'RenderBoost',
+                  AppLocale.renderBoost.getString(context),
                   style: TextStyle(
                     color: Color(0xFFFF6D00),
                     fontWeight: FontWeight.w800,

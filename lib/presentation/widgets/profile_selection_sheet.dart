@@ -668,7 +668,7 @@ class _ProfileSelectionSheetState extends State<ProfileSelectionSheet> {
           const SizedBox(height: 8),
           Row(
             children: [
-              _buildGentleChargeChip(context, label: 'Off', value: null, isDark: isDark),
+              _buildGentleChargeChip(context, label: AppLocale.offLabel.getString(context), value: null, isDark: isDark),
               const SizedBox(width: 8),
               _buildGentleChargeChip(context, label: '500mA', value: 500, isDark: isDark),
               const SizedBox(width: 8),
@@ -708,7 +708,7 @@ class _ProfileSelectionSheetState extends State<ProfileSelectionSheet> {
           const SizedBox(height: 8),
           Row(
             children: [
-              _buildFpsChip(context, label: 'Auto', value: null, isDark: isDark),
+              _buildFpsChip(context, label: AppLocale.autoLabel.getString(context), value: null, isDark: isDark),
               const SizedBox(width: 8),
               _buildFpsChip(context, label: '60 FPS', value: 60, isDark: isDark),
               const SizedBox(width: 8),

@@ -347,6 +347,19 @@ mixin AppLocale {
   static const String quantileP95 = 'quantileP95';
   static const String quantileP99 = 'quantileP99';
 
+  static const String bypassBadge = 'bypassBadge';
+  static const String thermalOffBadge = 'thermalOffBadge';
+  static const String autoLabel = 'autoLabel';
+  static const String offLabel = 'offLabel';
+  static const String statusHot = 'statusHot';
+  static const String statusWarm = 'statusWarm';
+  static const String statusOk = 'statusOk';
+  static const String statusNormal = 'statusNormal';
+  static const String daemonTab = 'daemonTab';
+  static const String langEnglish = 'langEnglish';
+  static const String langSpanish = 'langSpanish';
+  static const String langChinese = 'langChinese';
+
   static const Map<String, dynamic> en = {
     profiles: 'Profiles',
     thermal: 'Thermal',
@@ -673,6 +686,18 @@ mixin AppLocale {
     quantileP50: 'P50 (Median)',
     quantileP95: 'P95 (Smooth)',
     quantileP99: 'P99 (Extreme)',
+    bypassBadge: 'Bypass',
+    thermalOffBadge: 'Thermal OFF',
+    autoLabel: 'Auto',
+    offLabel: 'Off',
+    statusHot: 'HOT',
+    statusWarm: 'WARM',
+    statusOk: 'OK',
+    statusNormal: 'Normal',
+    daemonTab: 'Daemon',
+    langEnglish: 'English',
+    langSpanish: 'Spanish',
+    langChinese: 'Chinese (Simplified)',
   };
 
   static const Map<String, dynamic> es = {
@@ -1001,6 +1026,18 @@ mixin AppLocale {
     quantileP50: 'P50 (Mediana)',
     quantileP95: 'P95 (Suave)',
     quantileP99: 'P99 (Extremo)',
+    bypassBadge: 'Bypass',
+    thermalOffBadge: 'Térmico OFF',
+    autoLabel: 'Auto',
+    offLabel: 'Apagado',
+    statusHot: 'CALIENTE',
+    statusWarm: 'TEMPLADO',
+    statusOk: 'OK',
+    statusNormal: 'Normal',
+    daemonTab: 'Daemon',
+    langEnglish: 'Inglés',
+    langSpanish: 'Español',
+    langChinese: 'Chino (simplificado)',
   };
   static const Map<String, dynamic> zh = {
   profiles: '配置',
@@ -1326,6 +1363,18 @@ mixin AppLocale {
   quantileP50: 'P50（中位数）',
   quantileP95: 'P95（流畅）',
   quantileP99: 'P99（极限）',
+  bypassBadge: '旁路',
+  thermalOffBadge: '温控关',
+  autoLabel: '自动',
+  offLabel: '关闭',
+  statusHot: '过热',
+  statusWarm: '温热',
+  statusOk: '正常',
+  statusNormal: '正常',
+  daemonTab: '守护进程',
+  langEnglish: '英语',
+  langSpanish: '西班牙语',
+  langChinese: '简体中文',
   };
 
   static String getValue(String key) {

@@ -342,7 +342,7 @@ class HardwareTelemetryCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      _cleanFreq(state.gpuFreq),
+                      _cleanFreq(context, state.gpuFreq),
                       style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w800,
                         fontSize: 13.5,
@@ -412,7 +412,7 @@ class HardwareTelemetryCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      _cleanFreq(state.dramFreq),
+                      _cleanFreq(context, state.dramFreq),
                       style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w800,
                         fontSize: 13.5,
@@ -512,14 +512,14 @@ class HardwareTelemetryCard extends StatelessWidget {
                           ],
                         ),
                         if (state.socTempC != null)
-                          _tempBadge(state.socTempC!, isDark),
+                          _tempBadge(context, state.socTempC!, isDark),
                       ],
                     ),
                     const SizedBox(height: 3),
                     Text(
                       state.socTempC != null
                           ? '${state.socTempC!.toStringAsFixed(0)}°C'
-                          : 'Normal',
+                          : AppLocale.statusNormal.getString(context),
                       style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w800,
                         fontSize: 13.5,
@@ -761,11 +761,11 @@ class HardwareTelemetryCard extends StatelessWidget {
     return r.clamp(0.14, 1.0);
   }
 
-  Widget _tempBadge(double temp, bool isDark) {
+  Widget _tempBadge(BuildContext context, double temp, bool isDark) {
     final (label, color) = switch (temp) {
-      >= 70.0 => ('HOT', isDark ? const Color(0xFFEF4444) : const Color(0xFFDC2626)),
-      >= 55.0 => ('WARM', isDark ? const Color(0xFFF59E0B) : const Color(0xFFD97706)),
-      _ => ('OK', isDark ? const Color(0xFF10B981) : const Color(0xFF059669)),
+      >= 70.0 => (AppLocale.statusHot.getString(context), isDark ? const Color(0xFFEF4444) : const Color(0xFFDC2626)),
+      >= 55.0 => (AppLocale.statusWarm.getString(context), isDark ? const Color(0xFFF59E0B) : const Color(0xFFD97706)),
+      _ => (AppLocale.statusOk.getString(context), isDark ? const Color(0xFF10B981) : const Color(0xFF059669)),
     };
 
     return Container(
@@ -789,8 +789,8 @@ class HardwareTelemetryCard extends StatelessWidget {
     );
   }
 
-  String _cleanFreq(String freq) {
-    if (freq.isEmpty) return 'Auto';
+  String _cleanFreq(BuildContext context, String freq) {
+    if (freq.isEmpty) return AppLocale.autoLabel.getString(context);
     return freq.trim();
   }
 
