@@ -344,7 +344,7 @@ class _AppProfilesScreenState extends ConsumerState<AppProfilesScreen>
           AppConstants.spacing16,
           AppConstants.spacing80 + AppConstants.spacing16,
         ),
-        scrollCacheExtent: const ScrollCacheExtent.pixels(600),
+        cacheExtent: 600,
         itemCount: filteredApps.length,
         itemBuilder: (context, index) {
           final appProfile = filteredApps[index];
