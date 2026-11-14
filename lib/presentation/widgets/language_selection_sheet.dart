@@ -20,6 +20,7 @@ class LanguageSelectionSheet extends StatelessWidget {
     final languages = [
       (code: 'en', icon: '🇬🇧', title: 'English', subtitle: 'English'),
       (code: 'es', icon: '🇪🇸', title: 'Español', subtitle: 'Spanish'),
+      (code: 'zh', icon: '🇨🇳', title: '中文', subtitle: 'Chinese (Simplified)'),
     ];
 
     return Container(

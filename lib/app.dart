@@ -28,6 +28,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       mapLocales: [
         const MapLocale('en', AppLocale.en),
         const MapLocale('es', AppLocale.es),
+        const MapLocale('zh', AppLocale.zh),
       ],
       initLanguageCode: systemLanguage == 'es' ? 'es' : 'en',
     );
