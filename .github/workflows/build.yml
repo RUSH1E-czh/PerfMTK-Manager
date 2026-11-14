@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  FLUTTER_VERSION: '3.24.5'   # 项目要求 3.24+，可按需升级
+  FLUTTER_VERSION: '3.38.5'   # 项目要求 3.24+，可按需升级
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
