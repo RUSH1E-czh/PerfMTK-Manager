@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_profile_label">PerfMTK Profile</string>
+    <string name="tile_profile_format">Perf: %1$s</string>
+    <string name="tile_bypass_label">PerfMTK Bypass</string>
+    <string name="tile_bypass_active">Bypass Activo</string>
+    <string name="tile_bypass_standard">Estándar</string>
+</resources>

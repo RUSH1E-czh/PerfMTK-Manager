@@ -58,7 +58,7 @@ Granular, intuitive sliders and dropdown controls for all 10 native HAL subsyste
 ### 6. Design & Customization
 * **Glassmorphic Navigation**: Floating bottom navigation bar with fluid screen transitions.
 * **Dynamic Theming**: Full Material 3 support with dark and light palettes.
-* **Bilingual Localization**: Complete native Spanish and English translations.
+* **Trilingual Localization**: Complete native English, Spanish and Simplified Chinese translations, switchable in Settings → Language.
 
 ---
 

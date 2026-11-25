@@ -30,6 +30,18 @@ void main() {
 - Motor IPC en Tiempo Real: comunicación de ultra-baja latencia con el daemon nativo de PerfMTK v16.2 (`perfmtkd`).
 - Compilación y Rendimiento: dependencias actualizadas, animaciones optimizadas y compatibilidad total con Android 14+ HyperOS.
 
+## 中文
+- Bento 遥测控制台：实时监控 CPU 集群频率、Mali GPU 时钟与 LPDDR5X 内存总线速率。
+- 实时芯片分析：SoC 温度与电池温度持续滚动曲线。
+- 充电旁路：边充边玩也不发热、不损耗电池，并可配置温控切断保护。
+- 电池保护：自定义最高充电上限（如 80%），延长电池健康与寿命。
+- 联发科触控增强：直接选择触控采样率（480Hz/2160Hz）与平滑滤波开关。
+- 快捷设置磁贴：直接从通知面板切换性能配置与充电旁路。
+- 全新配置编辑器：CPU 调度器、频率、uclamp、devfreq 与 UFS 存储的模块化标签页控件。
+- 智能应用配置：每个应用的配置分配更简洁，支持快速搜索、分类筛选与息屏配置。
+- 实时 IPC 引擎：与原生 PerfMTK v16.2 守护进程（`perfmtkd`）低延迟通信。
+- 构建与性能：升级依赖、优化动画，完整支持 Android 14+ HyperOS。
+
 **Full Changelog**: https://github.com/JUANIMAN/PerfMTK-Manager/compare/v7.0.0...v8.0.0
 ''';
 
@@ -65,6 +77,23 @@ void main() {
       expect(changelogItems.length, 10);
       expect(changelogItems.first.text, startsWith('Consola Bento de Telemetría:'));
       expect(changelogItems.last.text, startsWith('Compilación y Rendimiento:'));
+    });
+
+    testWidgets('extracts Chinese section items when currentLanguage is zh', (tester) async {
+      final checker = UpdateChecker(
+        owner: 'JUANIMAN',
+        repo: 'PerfMTK-Manager',
+        currentVersion: '7.0.0',
+        currentLanguage: 'zh',
+      );
+
+      final widget = checker.processChangelogForTesting(sampleChangelog);
+      await tester.pumpWidget(MaterialApp(home: Scaffold(body: widget)));
+
+      final changelogItems = tester.widgetList<ChangelogList>(find.byType(ChangelogList)).toList();
+      expect(changelogItems.length, 10);
+      expect(changelogItems.first.text, startsWith('Bento 遥测控制台：'));
+      expect(changelogItems.last.text, startsWith('构建与性能：'));
     });
   });
 }

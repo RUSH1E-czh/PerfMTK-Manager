@@ -8,19 +8,9 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-// 优先读取 key.properties，回退读取 local.properties（兼容你现有本机配置）
 val keystoreProperties = Properties()
-val keyPropertiesFile = rootProject.file("key.properties")
-val localPropertiesFile = rootProject.file("local.properties")
-
-when {
-    keyPropertiesFile.exists() -> keyPropertiesFile.inputStream().use { keystoreProperties.load(it) }
-    localPropertiesFile.exists() -> localPropertiesFile.inputStream().use { keystoreProperties.load(it) }
-}
-
-// 四个签名属性齐全才算有可用的 keystore
-val hasKeystore = listOf("storeFile", "storePassword", "keyAlias", "keyPassword")
-    .all { !keystoreProperties.getProperty(it).isNullOrBlank() }
+val keystorePropertiesFile = rootProject.file("local.properties")
+keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
     namespace = "com.perfmtk.manager"
@@ -37,7 +27,10 @@ android {
     }
 
     defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.perfmtk.manager"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -45,36 +38,29 @@ android {
     }
 
     signingConfigs {
-        if (hasKeystore) {
-            create("release") {
-                storeFile = file(keystoreProperties.getProperty("storeFile"))
-                storePassword = keystoreProperties.getProperty("storePassword")
-                keyAlias = keystoreProperties.getProperty("keyAlias")
-                keyPassword = keystoreProperties.getProperty("keyPassword")
-            }
+        create("release") {
+            storeFile = file(keystoreProperties.getProperty("storeFile"))
+            storePassword = keystoreProperties.getProperty("storePassword")
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
         }
     }
 
     buildTypes {
         release {
-            // 有 keystore 用 release 签名，否则回退 debug 签名，保证 CI 能出包
-            signingConfig = if (hasKeystore) {
-                signingConfigs.getByName("release")
-            } else {
-                signingConfigs.getByName("debug")
-            }
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             isDebuggable = false
         }
 
         debug {
             signingConfig = signingConfigs.getByName("debug")
             isDebuggable = true
+            // Lets a debug build live next to the release app (different signing key).
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
         }
     }
 }

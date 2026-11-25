@@ -84,7 +84,7 @@ class ProfileTileService : TileService() {
         val profile = overrideProfile ?: getCurrentProfile()
         
         val displayName = profile.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
-        tile.label = "Perf: $displayName"
+        tile.label = getString(R.string.tile_profile_format, displayName)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             tile.subtitle = displayName
         }

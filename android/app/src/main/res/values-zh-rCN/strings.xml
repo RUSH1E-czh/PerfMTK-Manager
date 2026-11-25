@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_profile_label">PerfMTK 配置</string>
+    <string name="tile_profile_format">性能：%1$s</string>
+    <string name="tile_bypass_label">充电旁路</string>
+    <string name="tile_bypass_active">旁路已启用</string>
+    <string name="tile_bypass_standard">标准</string>
+</resources>
