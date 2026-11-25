@@ -1373,4 +1373,11 @@ class AppLocalizationsEs extends AppLocalizations {
     return 'Versión ${version}';
   }
 
+
+  @override
+  String get battLabelCurrent => 'Corriente';
+
+  @override
+  String get battIdlePlugged => 'Conectado / sin carga';
+
 }

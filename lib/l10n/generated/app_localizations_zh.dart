@@ -1304,4 +1304,11 @@ class AppLocalizationsZh extends AppLocalizations {
     return '版本 ${version}';
   }
 
+
+  @override
+  String get battLabelCurrent => '电流';
+
+  @override
+  String get battIdlePlugged => '已接电源 / 未充电';
+
 }

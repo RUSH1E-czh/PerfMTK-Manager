@@ -594,5 +594,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "battLabelCurrent": "Current",
+  "battIdlePlugged": "Plugged in / not charging"
 }

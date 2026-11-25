@@ -518,5 +518,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "battLabelCurrent": "Corriente",
+  "battIdlePlugged": "Conectado / sin carga"
 }

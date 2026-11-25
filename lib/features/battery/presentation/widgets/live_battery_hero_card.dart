@@ -22,10 +22,16 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
     final capacity = state.batteryCapacityPct ?? 50;
     final status = state.chargeStatus.toLowerCase();
-    final isDischarging = status == 'discharging';
+    // Power delivery overrides the raw battery status: with bypass or battery
+    // care active the kernel often keeps reporting "Discharging" even while
+    // the charger is plugged in, which made the UI claim the phone was
+    // discharging on cable power.
+    final onExternalPower = state.chargeBypass || state.batteryCareSuspended;
+    final isDischarging = status == 'discharging' && !onExternalPower;
     final isCharging = status == 'charging';
     final isFull = status == 'full' || (capacity >= 100 && !isDischarging);
-    final isConnectedToPower = !isDischarging && (isCharging || isFull || status == 'not charging');
+    final isConnectedToPower = onExternalPower ||
+        (!isDischarging && (isCharging || isFull || status == 'not charging'));
     final isBypassActive = isConnectedToPower && state.chargeBypass;
     final isCareSuspended = isConnectedToPower && state.batteryCareSuspended;
 
@@ -176,7 +182,9 @@ class LiveBatteryHeroCard extends StatelessWidget {
             children: [
               Expanded(
                 child: _MetricTile(
-                  label: isCharging
+                  label: isBypassActive
+                      ? context.l10n.battLabelCurrent
+                      : isCharging
                       ? context.l10n.battLabelCharge
                       : context.l10n.battLabelConsumption,
                   value: '${currentMa.abs()} mA',
@@ -421,8 +429,11 @@ class LiveBatteryHeroCard extends StatelessWidget {
         );
       }
     } else {
-      // Discharging
-      if (absCurrentMa > 30 && counterMah > 0) {
+      // Not charging: distinguish "plugged in but idle" from real discharge.
+      final pluggedIdle = isBypassActive ||
+          isCareSuspended ||
+          state.chargeStatus.toLowerCase() == 'not charging';
+      if (!pluggedIdle && absCurrentMa > 30 && counterMah > 0) {
         final totalMinutes = ((counterMah / absCurrentMa) * 60).round();
         final hours = totalMinutes ~/ 60;
         final minutes = totalMinutes % 60;
@@ -492,7 +503,9 @@ class LiveBatteryHeroCard extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  context.l10n.battIdleMinimal,
+                  pluggedIdle
+                      ? context.l10n.battIdlePlugged
+                      : context.l10n.battIdleMinimal,
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: primaryColor,
                     fontWeight: FontWeight.w600,
