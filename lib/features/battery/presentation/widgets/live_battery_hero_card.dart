@@ -52,13 +52,19 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
     final currentMa = state.chargeCurrentNowMa ?? 0;
     final voltageMv = state.chargeVoltageNowMv ?? 0;
-    final powerW = state.chargePowerW ?? 0.0;
+    final reportedPowerW = state.chargePowerW ?? 0.0;
+    // Some PerfMTK builds expose voltage/current but report 0 W; derive the
+    // instantaneous power from V x A instead of showing a misleading 0.00 W.
+    final computedPowerW = (voltageMv > 0 && currentMa.abs() >= 50)
+        ? (voltageMv / 1000.0) * (currentMa.abs() / 1000.0)
+        : 0.0;
+    final powerW = reportedPowerW > 0.01 ? reportedPowerW : computedPowerW;
 
     String statusBadgeText;
     if (isBypassActive) {
-      statusBadgeText = hasHardwareBypass
-          ? context.l10n.chargeBypassActive
-          : context.l10n.battStatusQuickCharge;
+      // While bypassing, the battery is not charging; "quick charge" would be
+      // misleading, so always surface the bypass state instead.
+      statusBadgeText = context.l10n.chargeBypassActive;
     } else if (isCareSuspended) {
       statusBadgeText = context.l10n.battStatusProtectedCharge('${state.batteryCareLimitPct}');
     } else if (isCharging) {
@@ -344,13 +350,16 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
       if (absCurrentMa > 150) {
         final remFullMah = (fullMah - counterMah).clamp(0, fullMah);
-        final minToFull = ((remFullMah / absCurrentMa) * 60).round();
+        final minToFullRaw = ((remFullMah / absCurrentMa) * 60).round();
+        // Never render "0 min": round up to one minute when there is time left.
+        final minToFull = minToFullRaw < 1 ? 1 : minToFullRaw;
 
         int? minToCare;
         if (state.batteryCareEnabled && capacity < state.batteryCareLimitPct) {
           final careTargetMah = ((fullMah * state.batteryCareLimitPct) / 100).round();
           final remCareMah = (careTargetMah - counterMah).clamp(0, careTargetMah);
-          minToCare = ((remCareMah / absCurrentMa) * 60).round();
+          final minToCareRaw = ((remCareMah / absCurrentMa) * 60).round();
+          minToCare = minToCareRaw < 1 ? 1 : minToCareRaw;
         }
 
         String primaryText;
