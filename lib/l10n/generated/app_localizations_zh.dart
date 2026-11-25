@@ -1171,4 +1171,137 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get refresh => '刷新';
 
+
+  @override
+  String get battStatusQuickCharge => '快速充电';
+
+  @override
+  String battStatusProtectedCharge(String limit) {
+    return '保护充电（${limit}%）';
+  }
+
+  @override
+  String get battStatusTurbo => '极速 67W';
+
+  @override
+  String get battStatusCharging => '充电中';
+
+  @override
+  String get battStatusCharged => '已充满（100%）';
+
+  @override
+  String get battStatusDischarging => '放电中';
+
+  @override
+  String get battLabelCharge => '充电';
+
+  @override
+  String get battLabelConsumption => '耗电';
+
+  @override
+  String get battBannerHardwareBypass => '线缆直接供电（旁路已启用），电芯处于休息状态。';
+
+  @override
+  String get battBannerGameFastCharge => '游戏快充已启用（已绕过温控限制）。';
+
+  @override
+  String battBannerCareSuspended(String limit) {
+    return '健康保护已暂停充电（已达 ${limit}%）。';
+  }
+
+  @override
+  String get battFullyCharged => '电池已充满（100%）';
+
+  @override
+  String battTimeToCareHm(String h, String m, String limit) {
+    return '距离截止（${limit}%）约 ${h} 小时 ${m} 分';
+  }
+
+  @override
+  String battTimeToCareMin(String m, String limit) {
+    return '距离截止（${limit}%）约 ${m} 分钟';
+  }
+
+  @override
+  String battTimeToFullHm(String h, String m) {
+    return '距 100% 约 ${h} 小时 ${m} 分';
+  }
+
+  @override
+  String battTimeToFullMin(String m) {
+    return '距 100% 约 ${m} 分钟';
+  }
+
+  @override
+  String battTimeFullChargeHm(String h, String m) {
+    return '充满约需 ${h} 小时 ${m} 分';
+  }
+
+  @override
+  String battTimeFullChargeMin(String m) {
+    return '充满约需 ${m} 分钟';
+  }
+
+  @override
+  String battRuntimeHm(String h, String m) {
+    return '剩余续航约 ${h} 小时 ${m} 分';
+  }
+
+  @override
+  String battRuntimeMin(String m) {
+    return '剩余续航约 ${m} 分钟';
+  }
+
+  @override
+  String battConsumptionValue(String ma) {
+    return '耗电：${ma} mA';
+  }
+
+  @override
+  String get battIdleMinimal => '电池待机 / 最低耗电';
+
+  @override
+  String get battHealthExcellent => '状态优秀';
+
+  @override
+  String get battHealthGood => '状态良好';
+
+  @override
+  String get battHealthWorn => '中度损耗';
+
+  @override
+  String get battHealthDegraded => '明显损耗';
+
+  @override
+  String get battCycleNew => '全新';
+
+  @override
+  String get battCycleExcellent => '优秀';
+
+  @override
+  String get battCycleNormal => '正常';
+
+  @override
+  String get battCycleProlonged => '长期使用';
+
+  @override
+  String get battTagDesign => '设计';
+
+  @override
+  String get thermalOemActive => '温控保护已启用（OEM）';
+
+  @override
+  String get thermalThrottlingOff => '降频已禁用（最强性能）';
+
+  @override
+  String get thermalOemOnDesc => '系统温控服务（mi_thermald）会调节温度。设备发热时会限制充电速度、亮度或帧率。';
+
+  @override
+  String get thermalOemOffDesc => '系统温控服务已禁用。可避免帧率骤降，并在没有软件温控降频的情况下允许最高充电速度。';
+
+  @override
+  String aboutVersion(String version) {
+    return '版本 ${version}';
+  }
+
 }

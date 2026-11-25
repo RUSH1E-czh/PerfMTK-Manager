@@ -456,5 +456,143 @@
   },
   "temperature": "Temperature",
   "storedEnergy": "Stored Energy",
-  "refresh": "Refresh"
+  "refresh": "Refresh",
+  "battStatusQuickCharge": "Quick Charge",
+  "battStatusProtectedCharge": "Protected Charge ({limit}%)",
+  "@battStatusProtectedCharge": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battStatusTurbo": "Turbo 67W",
+  "battStatusCharging": "Charging",
+  "battStatusCharged": "Charged (100%)",
+  "battStatusDischarging": "Discharging",
+  "battLabelCharge": "Charge",
+  "battLabelConsumption": "Consumption",
+  "battBannerHardwareBypass": "Direct cable power (bypass active). The cell rests.",
+  "battBannerGameFastCharge": "Game fast charge active (thermal limit bypassed).",
+  "battBannerCareSuspended": "Charging suspended by health protection ({limit}% reached).",
+  "@battBannerCareSuspended": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battFullyCharged": "Battery fully charged (100%)",
+  "battTimeToCareHm": "~{h}h {m}m to cut-off ({limit}%)",
+  "@battTimeToCareHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToCareMin": "~{m} min to cut-off ({limit}%)",
+  "@battTimeToCareMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToFullHm": "~{h}h {m}m to 100%",
+  "@battTimeToFullHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToFullMin": "~{m} min to 100%",
+  "@battTimeToFullMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeFullChargeHm": "~{h}h {m}m to full charge",
+  "@battTimeFullChargeHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeFullChargeMin": "~{m} min to full charge",
+  "@battTimeFullChargeMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battRuntimeHm": "~{h}h {m}m runtime left",
+  "@battRuntimeHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battRuntimeMin": "~{m} m runtime left",
+  "@battRuntimeMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battConsumptionValue": "Consumption: {ma} mA",
+  "@battConsumptionValue": {
+    "placeholders": {
+      "ma": {
+        "type": "String"
+      }
+    }
+  },
+  "battIdleMinimal": "Battery idle / minimal consumption",
+  "battHealthExcellent": "Excellent state",
+  "battHealthGood": "Good state",
+  "battHealthWorn": "Moderate wear",
+  "battHealthDegraded": "Significant wear",
+  "battCycleNew": "New",
+  "battCycleExcellent": "Excellent",
+  "battCycleNormal": "Normal",
+  "battCycleProlonged": "Extended use",
+  "battTagDesign": "Design",
+  "thermalOemActive": "Thermal Protection Active (OEM)",
+  "thermalThrottlingOff": "Throttling Disabled (Max Performance)",
+  "thermalOemOnDesc": "System thermal services (mi_thermald) regulate temperature. If the device heats up, they limit charging speed, brightness or FPS.",
+  "thermalOemOffDesc": "System thermal services disabled. Prevents forced FPS drops and allows maximum charge rate without software thermal throttling.",
+  "aboutVersion": "Version {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  }
 }

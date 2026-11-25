@@ -170,7 +170,7 @@ class _CustomAboutDialogState extends State<CustomAboutDialog>
               borderRadius: BorderRadius.circular(AppConstants.radiusMedium),
             ),
             child: Text(
-              'Versión $version',
+              context.l10n.aboutVersion(version),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Colors.white.withValues(alpha: 0.9),
                 fontWeight: FontWeight.w500,

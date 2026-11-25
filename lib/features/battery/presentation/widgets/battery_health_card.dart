@@ -28,27 +28,27 @@ class BatteryHealthCard extends StatelessWidget {
     String healthStatusText;
     if (soh >= 85) {
       healthColor = AppPalette.neonGreen; // Vivid Green
-      healthStatusText = 'Excelente estado';
+      healthStatusText = context.l10n.battHealthExcellent;
     } else if (soh >= 75) {
       healthColor = context.perfColors.accent; // Blue
-      healthStatusText = 'Buen estado';
+      healthStatusText = context.l10n.battHealthGood;
     } else if (soh >= 65) {
       healthColor = AppPalette.neonAmber; // Amber
-      healthStatusText = 'Desgaste moderado';
+      healthStatusText = context.l10n.battHealthWorn;
     } else {
       healthColor = AppPalette.neonRed; // Red / Orange
-      healthStatusText = 'Desgaste significativo';
+      healthStatusText = context.l10n.battHealthDegraded;
     }
 
     String cycleBadgeText;
     if (cycles <= 0) {
-      cycleBadgeText = 'Nuevo';
+      cycleBadgeText = context.l10n.battCycleNew;
     } else if (cycles < 300) {
-      cycleBadgeText = 'Excelente';
+      cycleBadgeText = context.l10n.battCycleExcellent;
     } else if (cycles < 700) {
-      cycleBadgeText = 'Normal';
+      cycleBadgeText = context.l10n.battCycleNormal;
     } else {
-      cycleBadgeText = 'Uso Prolongado';
+      cycleBadgeText = context.l10n.battCycleProlonged;
     }
 
     return Container(
@@ -203,7 +203,7 @@ class BatteryHealthCard extends StatelessWidget {
                 child: _HealthMetricTile(
                   label: context.l10n.batteryDesignCapacity,
                   value: '$designMah mAh',
-                  badge: 'Diseño',
+                  badge: context.l10n.battTagDesign,
                   icon: Icons.precision_manufacturing_rounded,
                   iconColor: AppPalette.neonAmber,
                 ),

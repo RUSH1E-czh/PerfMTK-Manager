@@ -1240,4 +1240,137 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get refresh => 'Actualizar';
+
+  @override
+  String get battStatusQuickCharge => 'Carga Rápida';
+
+  @override
+  String battStatusProtectedCharge(String limit) {
+    return 'Carga Protegida (${limit}%)';
+  }
+
+  @override
+  String get battStatusTurbo => 'Turbo 67W';
+
+  @override
+  String get battStatusCharging => 'Cargando';
+
+  @override
+  String get battStatusCharged => 'Cargada (100%)';
+
+  @override
+  String get battStatusDischarging => 'Descargando';
+
+  @override
+  String get battLabelCharge => 'Carga';
+
+  @override
+  String get battLabelConsumption => 'Consumo';
+
+  @override
+  String get battBannerHardwareBypass => 'Alimentación directa por cable (Bypass activo). La celda descansa.';
+
+  @override
+  String get battBannerGameFastCharge => 'Carga rápida en juegos activa (límite térmico anulado).';
+
+  @override
+  String battBannerCareSuspended(String limit) {
+    return 'Carga suspendida por protección de salud (${limit}% alcanzado).';
+  }
+
+  @override
+  String get battFullyCharged => 'Batería completamente cargada (100%)';
+
+  @override
+  String battTimeToCareHm(String h, String m, String limit) {
+    return '~${h}h ${m}m hasta corte (${limit}%)';
+  }
+
+  @override
+  String battTimeToCareMin(String m, String limit) {
+    return '~${m} min hasta corte (${limit}%)';
+  }
+
+  @override
+  String battTimeToFullHm(String h, String m) {
+    return '~${h}h ${m}m para 100%';
+  }
+
+  @override
+  String battTimeToFullMin(String m) {
+    return '~${m} min para 100%';
+  }
+
+  @override
+  String battTimeFullChargeHm(String h, String m) {
+    return '~${h}h ${m}m para carga completa';
+  }
+
+  @override
+  String battTimeFullChargeMin(String m) {
+    return '~${m} min para carga completa';
+  }
+
+  @override
+  String battRuntimeHm(String h, String m) {
+    return '~${h} h ${m} m de autonomía restante';
+  }
+
+  @override
+  String battRuntimeMin(String m) {
+    return '~${m} m de autonomía restante';
+  }
+
+  @override
+  String battConsumptionValue(String ma) {
+    return 'Consumo: ${ma} mA';
+  }
+
+  @override
+  String get battIdleMinimal => 'Batería en reposo / Consumo mínimo';
+
+  @override
+  String get battHealthExcellent => 'Excelente estado';
+
+  @override
+  String get battHealthGood => 'Buen estado';
+
+  @override
+  String get battHealthWorn => 'Desgaste moderado';
+
+  @override
+  String get battHealthDegraded => 'Desgaste significativo';
+
+  @override
+  String get battCycleNew => 'Nuevo';
+
+  @override
+  String get battCycleExcellent => 'Excelente';
+
+  @override
+  String get battCycleNormal => 'Normal';
+
+  @override
+  String get battCycleProlonged => 'Uso Prolongado';
+
+  @override
+  String get battTagDesign => 'Diseño';
+
+  @override
+  String get thermalOemActive => 'Protección Térmica Activa (OEM)';
+
+  @override
+  String get thermalThrottlingOff => 'Throttling Desactivado (Máximo Rendimiento)';
+
+  @override
+  String get thermalOemOnDesc => 'Los servicios térmicos del sistema (mi_thermald) regulan la temperatura. Si el equipo se calienta, limitarán la velocidad de carga, brillo o FPS.';
+
+  @override
+  String get thermalOemOffDesc => 'Servicios térmicos del sistema deshabilitados. Previene caídas forzadas de FPS y permite la máxima tasa de carga sin estrangulamiento térmico del software.';
+
+  @override
+  String aboutVersion(String version) {
+    return 'Versión ${version}';
+  }
+
 }

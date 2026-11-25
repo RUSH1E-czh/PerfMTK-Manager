@@ -56,15 +56,19 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
     String statusBadgeText;
     if (isBypassActive) {
-      statusBadgeText = hasHardwareBypass ? 'Bypass Activo' : 'Carga Rápida';
+      statusBadgeText = hasHardwareBypass
+          ? context.l10n.chargeBypassActive
+          : context.l10n.battStatusQuickCharge;
     } else if (isCareSuspended) {
-      statusBadgeText = 'Carga Protegida (${state.batteryCareLimitPct}%)';
+      statusBadgeText = context.l10n.battStatusProtectedCharge('${state.batteryCareLimitPct}');
     } else if (isCharging) {
-      statusBadgeText = powerW >= 20.0 ? 'Turbo 67W' : 'Cargando';
+      statusBadgeText = powerW >= 20.0
+              ? context.l10n.battStatusTurbo
+              : context.l10n.battStatusCharging;
     } else if (isFull) {
-      statusBadgeText = 'Cargada (100%)';
+      statusBadgeText = context.l10n.battStatusCharged;
     } else {
-      statusBadgeText = 'Descargando';
+      statusBadgeText = context.l10n.battStatusDischarging;
     }
 
     return Container(
@@ -166,7 +170,9 @@ class LiveBatteryHeroCard extends StatelessWidget {
             children: [
               Expanded(
                 child: _MetricTile(
-                  label: isCharging ? 'Carga' : 'Consumo',
+                  label: isCharging
+                      ? context.l10n.battLabelCharge
+                      : context.l10n.battLabelConsumption,
                   value: '${currentMa.abs()} mA',
                   icon: isCharging ? Icons.arrow_downward_rounded : Icons.arrow_upward_rounded,
                   iconColor: isCharging ? AppPalette.neonGreen : AppPalette.sky400,
@@ -236,8 +242,8 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
     if (isBypassActive) {
       final bannerText = hasHardwareBypass
-          ? 'Alimentación directa por cable (Bypass activo). La celda descansa.'
-          : 'Carga rápida en juegos activa (límite térmico anulado).';
+          ? context.l10n.battBannerHardwareBypass
+          : context.l10n.battBannerGameFastCharge;
       return Container(
         margin: const EdgeInsets.only(top: AppConstants.spacing14),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -286,7 +292,7 @@ class LiveBatteryHeroCard extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: Text(
-                'Carga suspendida por protección de salud (${state.batteryCareLimitPct}% alcanzado).',
+                context.l10n.battBannerCareSuspended('${state.batteryCareLimitPct}'),
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: primaryColor,
                   fontWeight: FontWeight.w600,
@@ -323,7 +329,7 @@ class LiveBatteryHeroCard extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Batería completamente cargada (100%)',
+                  context.l10n.battFullyCharged,
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: primaryColor,
                     fontWeight: FontWeight.w600,
@@ -352,15 +358,15 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
         if (minToCare != null && minToCare > 0) {
           primaryText = minToCare >= 60
-              ? '~${minToCare ~/ 60}h ${minToCare % 60}m hasta corte (${state.batteryCareLimitPct}%)'
-              : '~$minToCare min hasta corte (${state.batteryCareLimitPct}%)';
+              ? context.l10n.battTimeToCareHm('${minToCare ~/ 60}', '${minToCare % 60}', '${state.batteryCareLimitPct}')
+              : context.l10n.battTimeToCareMin('$minToCare', '${state.batteryCareLimitPct}');
           secondaryText = minToFull >= 60
-              ? '~${minToFull ~/ 60}h ${minToFull % 60}m para 100%'
-              : '~$minToFull min para 100%';
+              ? context.l10n.battTimeToFullHm('${minToFull ~/ 60}', '${minToFull % 60}')
+              : context.l10n.battTimeToFullMin('$minToFull');
         } else {
           primaryText = minToFull >= 60
-              ? '~${minToFull ~/ 60}h ${minToFull % 60}m para carga completa'
-              : '~$minToFull min para carga completa';
+              ? context.l10n.battTimeFullChargeHm('${minToFull ~/ 60}', '${minToFull % 60}')
+              : context.l10n.battTimeFullChargeMin('$minToFull');
           secondaryText = '$absCurrentMa mA';
         }
 
@@ -414,9 +420,9 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
         final String timeText;
         if (hours > 0) {
-          timeText = '~$hours h $minutes m de autonomía restante';
+          timeText = context.l10n.battRuntimeHm('$hours', '$minutes');
         } else {
-          timeText = '~$minutes m de autonomía restante';
+          timeText = context.l10n.battRuntimeMin('$minutes');
         }
 
         return Container(
@@ -447,7 +453,7 @@ class LiveBatteryHeroCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Consumo: $absCurrentMa mA',
+                      context.l10n.battConsumptionValue('$absCurrentMa'),
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: cs.onSurfaceVariant,
                         fontSize: 10,
@@ -477,7 +483,7 @@ class LiveBatteryHeroCard extends StatelessWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  'Batería en reposo / Consumo mínimo',
+                  context.l10n.battIdleMinimal,
                   style: theme.textTheme.bodySmall?.copyWith(
                     color: primaryColor,
                     fontWeight: FontWeight.w600,

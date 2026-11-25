@@ -380,5 +380,143 @@
   "errorLoadingBattery": "Error al cargar el estado de la batería: {error}",
   "temperature": "Temperatura",
   "storedEnergy": "Energía almacenada",
-  "refresh": "Actualizar"
+  "refresh": "Actualizar",
+  "battStatusQuickCharge": "Carga Rápida",
+  "battStatusProtectedCharge": "Carga Protegida ({limit}%)",
+  "@battStatusProtectedCharge": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battStatusTurbo": "Turbo 67W",
+  "battStatusCharging": "Cargando",
+  "battStatusCharged": "Cargada (100%)",
+  "battStatusDischarging": "Descargando",
+  "battLabelCharge": "Carga",
+  "battLabelConsumption": "Consumo",
+  "battBannerHardwareBypass": "Alimentación directa por cable (Bypass activo). La celda descansa.",
+  "battBannerGameFastCharge": "Carga rápida en juegos activa (límite térmico anulado).",
+  "battBannerCareSuspended": "Carga suspendida por protección de salud ({limit}% alcanzado).",
+  "@battBannerCareSuspended": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battFullyCharged": "Batería completamente cargada (100%)",
+  "battTimeToCareHm": "~{h}h {m}m hasta corte ({limit}%)",
+  "@battTimeToCareHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToCareMin": "~{m} min hasta corte ({limit}%)",
+  "@battTimeToCareMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToFullHm": "~{h}h {m}m para 100%",
+  "@battTimeToFullHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToFullMin": "~{m} min para 100%",
+  "@battTimeToFullMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeFullChargeHm": "~{h}h {m}m para carga completa",
+  "@battTimeFullChargeHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeFullChargeMin": "~{m} min para carga completa",
+  "@battTimeFullChargeMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battRuntimeHm": "~{h} h {m} m de autonomía restante",
+  "@battRuntimeHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battRuntimeMin": "~{m} m de autonomía restante",
+  "@battRuntimeMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battConsumptionValue": "Consumo: {ma} mA",
+  "@battConsumptionValue": {
+    "placeholders": {
+      "ma": {
+        "type": "String"
+      }
+    }
+  },
+  "battIdleMinimal": "Batería en reposo / Consumo mínimo",
+  "battHealthExcellent": "Excelente estado",
+  "battHealthGood": "Buen estado",
+  "battHealthWorn": "Desgaste moderado",
+  "battHealthDegraded": "Desgaste significativo",
+  "battCycleNew": "Nuevo",
+  "battCycleExcellent": "Excelente",
+  "battCycleNormal": "Normal",
+  "battCycleProlonged": "Uso Prolongado",
+  "battTagDesign": "Diseño",
+  "thermalOemActive": "Protección Térmica Activa (OEM)",
+  "thermalThrottlingOff": "Throttling Desactivado (Máximo Rendimiento)",
+  "thermalOemOnDesc": "Los servicios térmicos del sistema (mi_thermald) regulan la temperatura. Si el equipo se calienta, limitarán la velocidad de carga, brillo o FPS.",
+  "thermalOemOffDesc": "Servicios térmicos del sistema deshabilitados. Previene caídas forzadas de FPS y permite la máxima tasa de carga sin estrangulamiento térmico del software.",
+  "aboutVersion": "Versión {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  }
 }

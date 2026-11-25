@@ -456,5 +456,143 @@
   },
   "temperature": "温度",
   "storedEnergy": "储能",
-  "refresh": "刷新"
+  "refresh": "刷新",
+  "battStatusQuickCharge": "快速充电",
+  "battStatusProtectedCharge": "保护充电（{limit}%）",
+  "@battStatusProtectedCharge": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battStatusTurbo": "极速 67W",
+  "battStatusCharging": "充电中",
+  "battStatusCharged": "已充满（100%）",
+  "battStatusDischarging": "放电中",
+  "battLabelCharge": "充电",
+  "battLabelConsumption": "耗电",
+  "battBannerHardwareBypass": "线缆直接供电（旁路已启用），电芯处于休息状态。",
+  "battBannerGameFastCharge": "游戏快充已启用（已绕过温控限制）。",
+  "battBannerCareSuspended": "健康保护已暂停充电（已达 {limit}%）。",
+  "@battBannerCareSuspended": {
+    "placeholders": {
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battFullyCharged": "电池已充满（100%）",
+  "battTimeToCareHm": "距离截止（{limit}%）约 {h} 小时 {m} 分",
+  "@battTimeToCareHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToCareMin": "距离截止（{limit}%）约 {m} 分钟",
+  "@battTimeToCareMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      },
+      "limit": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToFullHm": "距 100% 约 {h} 小时 {m} 分",
+  "@battTimeToFullHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeToFullMin": "距 100% 约 {m} 分钟",
+  "@battTimeToFullMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeFullChargeHm": "充满约需 {h} 小时 {m} 分",
+  "@battTimeFullChargeHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battTimeFullChargeMin": "充满约需 {m} 分钟",
+  "@battTimeFullChargeMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battRuntimeHm": "剩余续航约 {h} 小时 {m} 分",
+  "@battRuntimeHm": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battRuntimeMin": "剩余续航约 {m} 分钟",
+  "@battRuntimeMin": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "battConsumptionValue": "耗电：{ma} mA",
+  "@battConsumptionValue": {
+    "placeholders": {
+      "ma": {
+        "type": "String"
+      }
+    }
+  },
+  "battIdleMinimal": "电池待机 / 最低耗电",
+  "battHealthExcellent": "状态优秀",
+  "battHealthGood": "状态良好",
+  "battHealthWorn": "中度损耗",
+  "battHealthDegraded": "明显损耗",
+  "battCycleNew": "全新",
+  "battCycleExcellent": "优秀",
+  "battCycleNormal": "正常",
+  "battCycleProlonged": "长期使用",
+  "battTagDesign": "设计",
+  "thermalOemActive": "温控保护已启用（OEM）",
+  "thermalThrottlingOff": "降频已禁用（最强性能）",
+  "thermalOemOnDesc": "系统温控服务（mi_thermald）会调节温度。设备发热时会限制充电速度、亮度或帧率。",
+  "thermalOemOffDesc": "系统温控服务已禁用。可避免帧率骤降，并在没有软件温控降频的情况下允许最高充电速度。",
+  "aboutVersion": "版本 {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  }
 }

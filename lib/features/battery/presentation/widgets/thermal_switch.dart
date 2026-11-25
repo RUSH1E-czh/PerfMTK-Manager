@@ -129,8 +129,8 @@ class _ThermalSwitchState extends State<ThermalSwitch>
                           duration: AppConstants.animationFast,
                           child: Text(
                             widget.isEnabled
-                                ? 'Protección Térmica Activa (OEM)'
-                                : 'Throttling Desactivado (Máximo Rendimiento)',
+                                ? context.l10n.thermalOemActive
+                                : context.l10n.thermalThrottlingOff,
                             key: ValueKey(widget.isEnabled),
                             style: theme.textTheme.bodySmall?.copyWith(
                               color: activeColor,
@@ -159,8 +159,8 @@ class _ThermalSwitchState extends State<ThermalSwitch>
               const SizedBox(height: AppConstants.spacing12),
               Text(
                 widget.isEnabled
-                    ? 'Los servicios térmicos del sistema (mi_thermald) regulan la temperatura. Si el equipo se calienta, limitarán la velocidad de carga, brillo o FPS.'
-                    : 'Servicios térmicos del sistema deshabilitados. Previene caídas forzadas de FPS y permite la máxima tasa de carga sin estrangulamiento térmico de software.',
+                    ? context.l10n.thermalOemOnDesc
+                    : context.l10n.thermalOemOffDesc,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: cs.onSurfaceVariant,
                   height: 1.35,
