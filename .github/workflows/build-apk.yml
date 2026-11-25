@@ -42,14 +42,42 @@ jobs:
         run: flutter pub get
 
       - name: Build release APK
-        run: flutter build apk --release
+        id: build
+        shell: bash
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          flutter build apk --release --stacktrace 2>&1 | tee build.log
+
+      - name: Report build failure
+        if: steps.build.outcome == 'failure'
+        shell: bash
+        run: |
+          tail -n 80 build.log
+          msg=$(tail -n 80 build.log | tr -d '\r' | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}' | cut -c1-900)
+          echo "::error::Gradle build failed: $msg"
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log-${{ github.sha }}
+          path: build.log
+          if-no-files-found: ignore
+          retention-days: 7
+
+      - name: Fail when the build failed
+        if: steps.build.outcome == 'failure'
+        run: exit 1
 
       - name: Report APK
+        if: steps.build.outcome == 'success'
         run: |
           ls -l build/app/outputs/flutter-apk/
           sha256sum build/app/outputs/flutter-apk/app-release.apk
 
       - name: Upload APK artifact
+        if: steps.build.outcome == 'success'
         uses: actions/upload-artifact@v4
         with:
           name: perfmtk-manager-apk-${{ github.sha }}
