@@ -22,16 +22,15 @@ class LiveBatteryHeroCard extends StatelessWidget {
 
     final capacity = state.batteryCapacityPct ?? 50;
     final status = state.chargeStatus.toLowerCase();
-    // Power delivery overrides the raw battery status: with bypass or battery
-    // care active the kernel often keeps reporting "Discharging" even while
-    // the charger is plugged in, which made the UI claim the phone was
-    // discharging on cable power.
-    final onExternalPower = state.chargeBypass || state.batteryCareSuspended;
-    final isDischarging = status == 'discharging' && !onExternalPower;
+    // The daemon exposes no dedicated "plugged" flag: charge.bypass survives
+    // unplugging, so it must never be used to infer cable power. Trust the
+    // battery status, which is Discharging when unplugged and Charging /
+    // Full / Not charging while on external power.
+    final isDischarging = status == 'discharging';
     final isCharging = status == 'charging';
     final isFull = status == 'full' || (capacity >= 100 && !isDischarging);
-    final isConnectedToPower = onExternalPower ||
-        (!isDischarging && (isCharging || isFull || status == 'not charging'));
+    final isConnectedToPower =
+        isCharging || isFull || status == 'not charging';
     final isBypassActive = isConnectedToPower && state.chargeBypass;
     final isCareSuspended = isConnectedToPower && state.batteryCareSuspended;
 
