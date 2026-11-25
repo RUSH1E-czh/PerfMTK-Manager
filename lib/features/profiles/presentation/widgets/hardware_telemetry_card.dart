@@ -668,16 +668,41 @@ class HardwareTelemetryCard extends StatelessWidget {
   }
 
   int? _parseFreqValue(String raw) {
+    final mhz = _parseFreqMhz(raw);
+    return mhz?.round();
+  }
+
+  /// Parses values such as `815MHz`, `2.85GHz` or the daemon's
+  /// `5500000MHz` (DVFSRC reports kHz but labels it MHz) into MHz.
+  double? _parseFreqMhz(String raw) {
     final clean = raw.trim();
     final colonIdx = clean.indexOf(':');
-    final val = colonIdx != -1 ? clean.substring(colonIdx + 1).trim() : clean;
-    final numStr = val.replaceAll('MHz', '').replaceAll('GHz', '').trim();
-    final parsed = double.tryParse(numStr);
+    final val = (colonIdx != -1 ? clean.substring(colonIdx + 1) : clean).trim();
+    final upper = val.toUpperCase();
+    final match = RegExp(r'([\d.]+)').firstMatch(val);
+    final parsed = double.tryParse(match?.group(1) ?? '');
     if (parsed == null) return null;
-    if (val.contains('GHz') || parsed < 10) {
-      return (parsed * 1000).round();
+
+    double mhz;
+    if (upper.contains('GHZ')) {
+      mhz = parsed * 1000;
+    } else if (upper.contains('KHZ')) {
+      mhz = parsed / 1000;
+    } else if (upper.contains('HZ')) {
+      mhz = parsed / 1000000;
+    } else if (parsed < 10) {
+      // Bare small numbers are gigahertz.
+      mhz = parsed * 1000;
+    } else {
+      mhz = parsed;
     }
-    return parsed.round();
+
+    // Keep DDR/GPU clocks inside a plausible range: some daemons expose kHz
+    // values with an MHz suffix (e.g. "5500000MHz" for 5.5 GHz).
+    while (mhz > 12000) {
+      mhz /= 1000;
+    }
+    return mhz;
   }
 
   double _calcClusterRatio(int index, int total, int? mhz) {
@@ -769,8 +794,13 @@ class HardwareTelemetryCard extends StatelessWidget {
   }
 
   String _cleanFreq(String freq) {
-    if (freq.isEmpty) return 'Auto';
-    return freq.trim();
+    if (freq.trim().isEmpty) return 'Auto';
+    final mhz = _parseFreqMhz(freq);
+    if (mhz == null) return freq.trim();
+    if (mhz >= 1000) {
+      return '${(mhz / 1000).toStringAsFixed(2)} GHz';
+    }
+    return '${mhz.round()} MHz';
   }
 
 }
